@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+flex-grow = 0; // nothing happen
+flex-grow = 1; mean equal all
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+flex-grow apply only inside flex
+.item apply here
 
-## Available Scripts
+```css
+.container {
+  display: flex;
+}
 
-In the project directory, you can run:
+/* jo space khali  vo sab fil kar denga */
+.items {
+  flex-grow: 1;
+}
 
-### `npm start`
+/* this item take only three time space  */
+.itemInvisiable {
+  flex-grow: 3;
+}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+.container {
+  display: grit;
+  /* auto mean second column auto increase size */
+  grid-template-columns: 100px auto 100px;
+  grid-template-rows: 50px 50px;
+  grid-gap: 3px;
+}
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+.container {
+  display: grit;
+  /* auto mean second column auto increase size */
+  /* two column right now */
+  grid-template-columns: 100px auto;
+  /* three row */
+  grid-template-rows: 50px 50px 200px;
+  grid-gap: 3px;
+}
 
-### `npm test`
+.container {
+  display: grit;
+  /* auto mean second column auto increase size */
+  /* three column each size */
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  /* always take two size second column*/
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  /* another way right */
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: 50px 50px; */
+  grid-template-rows:repeat(2, 50px)
+  grid-gap: 3px;
+}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+/* short hand */
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+.container {
+  display: grid;
+  /* first row second column */
+  grid-template: repeat(2, 50px) / repeat(3, 1fr);
+  grid-gap: 3px;
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+.header {
+    grid-column-start:1;
+    /* end 3 mean count line first line second line end line */
+    grid-column-end:3;
+}
 
-### `npm run eject`
+/* shorthand */
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+.header {
+    /* grid-column:1/3; */
+    /* same thing above */
+    /* grid-column:1/ span 2; */
+    /* if we don't have many column we have */
+    grid-column:1/ -1;
+}
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+/* design  */
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+.container {
+    display:grid;
+    grid-gap:3px;
+    grid-template-columns:1fr 4fr;
+    grid-template-rows:20px 200px 40px;
+}
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+/* best way */
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+.container {
+    display:grid;
+    grid-gap:3px;
+    grid-template-columns:12fr fr;
+    grid-template-rows:20px 200px 40px;
+}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+.header {
+    grid-column: 1 / -1;
+}
+ .content{
+    grid-columns: 2/ -1;
+}
 
-### Code Splitting
+.footer {
+    grid-column: 1 / -1;
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+/* admin */
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+.container {
+    display:grid;
+    grid-gap:3px;
+    grid-template-columns:12fr fr;
+    grid-template-rows:20px 200px 40px;
+}
 
-### Making a Progressive Web App
+.header {
+    grid-column: 2 / -1;
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+.menu {
+    grid-row: 1 / 3;
+}
 
-### Advanced Configuration
+ .content{
+    grid-columns: 2/ -1;
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+.footer {
+    grid-column: 1 / -1;
+}
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+/* auto */
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+.container {
+    display:grid;
+    grid-gap:5px;
+    /* grid-template-columns:repeat(6, 1fr); */
+    /* auto fit will no increase decrease size */
+    /* grid-template-columns:repeat(auto-fit, 1fr); */
+    grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));
+    /* grid-template-rows:repeat(2, 100px) */
+    grid-template-rows:100px 100px;
+    grid-auto-rows:100px;
+}
+```

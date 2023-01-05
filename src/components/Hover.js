@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { useHover } from "../hooks";
+import { useMeasure } from "../hooks/useMeasure";
 
 export const Hover = () => {
   /*  const [isHover, setHover] = useState(false);
@@ -13,9 +14,14 @@ export const Hover = () => {
   }, []); */
   const [isHover, bind] = useHover();
 
+  const [{ ref }, bounds] = useMeasure();
+
+  console.log(bounds);
+
   return (
     <div>
       <div
+        ref={ref}
         {...bind}
         style={{
           width: 200,
